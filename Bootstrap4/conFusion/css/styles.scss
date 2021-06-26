@@ -74,3 +74,62 @@ body{
     bottom: 0px;
     z-index: 1;
 }
+
+#loginModal {
+    
+    .login-header {
+        
+        color: floralwhite;
+        background-color: $background-dark;
+        height: 60px;
+        padding: 0px 15px 0px 20px;
+
+        .modal-title{
+            padding: 10px 0px 0px 0px;
+        }
+
+        .close{
+            padding: 15px 0px 0px 0px;
+            color: $background-light;
+        }
+    }
+
+    .login-body {
+        color: black;
+        background-color: $background-pale;
+        height: 120px;
+        padding: 20px 15px 0px 20px;
+    }
+}
+
+#reserveModal {
+
+    .reserve-header {
+        
+        color: floralwhite;
+        background-color: $background-dark;
+        height: 60px;
+        padding: 0px 15px 0px 20px;
+
+        .modal-title{
+            padding: 10px 0px 0px 0px;
+        }
+
+        .close{
+            padding: 15px 0px 0px 0px;
+            color: $background-light;
+        }
+    }
+
+    .reserve-body {
+        color: black;
+        background-color: $background-pale;
+        height: 250px;
+        padding: 20px 15px 0px 20px;
+    }
+    
+    .reserve-footer {
+        background-color: $background-light;
+        padding: 0px 0px 40px 160px;
+    }
+}

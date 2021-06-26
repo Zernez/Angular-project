@@ -52,3 +52,41 @@ body {
   position: absolute;
   bottom: 0px;
   z-index: 1; }
+
+#loginModal .login-header {
+  color: floralwhite;
+  background-color: #512DA8;
+  height: 60px;
+  padding: 0px 15px 0px 20px; }
+  #loginModal .login-header .modal-title {
+    padding: 10px 0px 0px 0px; }
+  #loginModal .login-header .close {
+    padding: 15px 0px 0px 0px;
+    color: #9575CD; }
+
+#loginModal .login-body {
+  color: black;
+  background-color: #D1C4E9;
+  height: 120px;
+  padding: 20px 15px 0px 20px; }
+
+#reserveModal .reserve-header {
+  color: floralwhite;
+  background-color: #512DA8;
+  height: 60px;
+  padding: 0px 15px 0px 20px; }
+  #reserveModal .reserve-header .modal-title {
+    padding: 10px 0px 0px 0px; }
+  #reserveModal .reserve-header .close {
+    padding: 15px 0px 0px 0px;
+    color: #9575CD; }
+
+#reserveModal .reserve-body {
+  color: black;
+  background-color: #D1C4E9;
+  height: 250px;
+  padding: 20px 15px 0px 20px; }
+
+#reserveModal .reserve-footer {
+  background-color: #9575CD;
+  padding: 0px 0px 40px 160px; }
