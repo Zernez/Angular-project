@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class AboutComponent implements OnInit {
 
 
-  leader: Leader [];
+  leaders: Leader [];
 
   constructor(private leaderservice: LeaderService,
     private route: ActivatedRoute,
@@ -22,7 +22,8 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     
-    this.leader = this.leaderservice.getLeaders();
+    this.leaderservice.getLeaders()
+    .then(leaders => this.leaders = leaders);
   }
 
 }
