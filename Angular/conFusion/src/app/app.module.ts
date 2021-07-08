@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
 
 import { AppComponent } from './app.component';
 
@@ -50,6 +52,7 @@ import {MatSliderModule} from '@angular/material/slider';
   ],
 
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -71,7 +74,7 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSliderModule
   ],
 
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, {provide: 'baseURL', useValue: baseURL}],
 
   entryComponents: [
     LoginComponent],
