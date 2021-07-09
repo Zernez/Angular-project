@@ -25,6 +25,7 @@ export class DishdetailComponent implements OnInit {
   commentForm: FormGroup;
   comment: Comment;
   isDisabled: boolean;
+  errMess: string;
 
   formErrors = {
     'author': '',
@@ -49,7 +50,7 @@ export class DishdetailComponent implements OnInit {
     private location: Location, private fb: FormBuilder, @Inject('baseURL') private baseURL) { this.createForm(); }
 
   ngOnInit() {
-    this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
+    this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds, errmess => this.errMess = <any>errmess);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
   }

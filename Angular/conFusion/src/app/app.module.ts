@@ -27,6 +27,8 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
@@ -74,7 +76,7 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSliderModule
   ],
 
-  providers: [DishService, PromotionService, LeaderService, {provide: 'baseURL', useValue: baseURL}],
+  providers: [DishService, PromotionService, LeaderService, ProcessHTTPMsgService, {provide: 'baseURL', useValue: baseURL}],
 
   entryComponents: [
     LoginComponent],
