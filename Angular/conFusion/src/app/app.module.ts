@@ -38,6 +38,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSliderModule} from '@angular/material/slider';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
 
@@ -50,7 +51,8 @@ import {MatSliderModule} from '@angular/material/slider';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
 
   imports: [
