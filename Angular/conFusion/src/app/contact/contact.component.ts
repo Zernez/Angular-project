@@ -1,12 +1,26 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, Inject} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
+import { FeedbackService } from '../services/feedback.service';
+import { switchMap } from 'rxjs/operators';
+import { Params, ActivatedRoute } from '@angular/router';
+import { visibility } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
 
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+    },
+  animations: [
+    visibility(),
+    flyInOut(),
+    expand()
+  ]
 })
 export class ContactComponent implements OnInit {
 
@@ -15,6 +29,10 @@ export class ContactComponent implements OnInit {
   feedbackForm: FormGroup;
   feedback: Feedback;
   contactType = ContactType;
+  isDisabled: boolean;
+  isloading = false;
+  errMess: string;
+  visibility = 'shown';
 
   formErrors = {
     'firstname': '',
@@ -44,7 +62,8 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private feedbackservice: FeedbackService,
+    private route: ActivatedRoute, private fb: FormBuilder,  @Inject('baseURL') private baseURL) { 
     this.createForm();
   }
 
@@ -89,18 +108,25 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
-    this.feedbackForm.reset({
-      firstname: '',
-      lastname: '',
-      telnum: '',
-      email: '',
-      agree: false,
-      contacttype: 'None',
-      message: ''
-    });
-    this.feedbackFormDirective.resetForm();
-  }
 
+    this.isloading = true;
+    this.feedback = this.feedbackForm.value;
+
+    this.feedbackservice.submitFeedback(this.feedback)
+      .subscribe(feedback => {
+        this.feedback = feedback; this.isloading = false; setTimeout(() => this.feedback = null, 5000);
+      },
+      errmess => { this.feedback = null; this.isloading = false; this.errMess = <any>errmess; }); 
+      console.log(this.feedback);
+      
+    this.feedbackForm.reset({
+        firstname: '',
+        lastname: '',
+        telnum: '',
+        email: '',
+        agree: false,
+        contacttype: 'None',
+        message: ''
+      });
+  }
 }
