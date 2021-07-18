@@ -23,7 +23,7 @@ leaderRouter.route('/')
 })
 .delete((req, res, next) => {
     res.end('Deleting all leaders');
-})
+});
 
 leaderRouter.route('/:leaderId')
 .get((req,res,next) => {
